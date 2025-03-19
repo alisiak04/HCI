@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lecture Engagement Pod - Teacher's View</title>
+    <title>Teacher Votes</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
@@ -45,14 +45,13 @@
     </style>
 </head>
 <body>
-    <h1>Lecture Engagement Pod - Teacher's View</h1>
+    <h1>Class Votes</h1>
     <canvas id="votesChart"></canvas>
-    <button id="resetVotes">Start New Session</button>
-
+    <button id="resetVotes">Reset Votes</button>
     <script>
         let votesData = {};
         let votesChart;
-
+    
         function fetchVotes() {
             fetch('/api/votes')
                 .then(response => response.json())
@@ -65,21 +64,21 @@
                     }
                 });
         }
-
+    
         function createChart() {
             const ctx = document.getElementById('votesChart').getContext('2d');
             votesChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Got it', 'Confused', 'Example Needed'],
+                    labels: ['got it', 'confused', 'example needed'],
                     datasets: [{
                         label: 'Votes',
-                        data: [
-                            votesData['got it'] || 0, 
-                            votesData['confused'] || 0, 
-                            votesData['example needed'] || 0
+                        data: [votesData['got it'] || 0, votesData['confused'] || 0, votesData['example needed'] || 0],
+                        backgroundColor: [
+                            'green',  // got it
+                            'blue',   // confused
+                            'yellow'  // example needed
                         ],
-                        backgroundColor: ['green', 'yellow', 'blue'],
                     }]
                 },
                 options: {
@@ -91,7 +90,7 @@
                 }
             });
         }
-
+    
         function updateChart() {
             votesChart.data.datasets[0].data = [
                 votesData['got it'] || 0,
@@ -100,7 +99,7 @@
             ];
             votesChart.update();
         }
-
+    
         document.getElementById('resetVotes').addEventListener('click', () => {
             fetch('/api/reset_votes', {
                 method: 'POST'
@@ -111,9 +110,10 @@
                 updateChart();
             });
         });
-
+    
         fetchVotes();
-        setInterval(fetchVotes, 2000);  // Auto-refresh votes every 2 seconds
     </script>
+    
+    
 </body>
-</html>
+</html> 
