@@ -2,7 +2,7 @@
 #include <HTTPClient.h>
 
 const char* ssid = "Alisia";  // WiFi SSID
-const char* password = "iamsexy2104";  // WiFi Password
+const char* password = "iamgreat2104";  // WiFi Password
 const char* serverUrl = "http://172.20.10.3:5001/api/vote";  // Flask API URL
 
 const int buttonPin = 25;  // First button (Got it)
