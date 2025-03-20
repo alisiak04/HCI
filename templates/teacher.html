@@ -63,7 +63,8 @@
                     } else {
                         updateChart();
                     }
-                });
+                })
+                .catch(error => console.error("Error fetching votes:", error));
         }
     
         function createChart() {
@@ -74,7 +75,11 @@
                     labels: ['got it', 'confused', 'example needed'],
                     datasets: [{
                         label: 'Votes',
-                        data: [votesData['got it'] || 0, votesData['confused'] || 0, votesData['example needed'] || 0],
+                        data: [
+                            votesData['got it'] || 0,
+                            votesData['confused'] || 0,
+                            votesData['example needed'] || 0
+                        ],
                         backgroundColor: [
                             '#006400',  // DarkGreen for got it
                             '#0000CD',  // MediumBlue for confused
@@ -126,9 +131,11 @@
             });
         });
     
+        // Initial fetch on page load
         fetchVotes();
+    
+        // Auto refresh votes every 2 seconds without manual refresh
+        setInterval(fetchVotes, 2000);
     </script>
-    
-    
 </body>
-</html> 
+</html>
