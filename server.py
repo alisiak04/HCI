@@ -60,5 +60,35 @@ def reset_votes():
     student_votes = {}  # Reset student tracking
     return jsonify(votes)
 
+# def populate_dummy_data():
+#     """
+#     Populates the votes dictionary with dummy data for testing purposes.
+#     """
+#     global votes, student_votes
+    
+#     # Example dummy data
+#     dummy_votes = {
+#         "got it": 10,
+#         "confused": 5,
+#         "example needed": 3,
+#         "undo": 2
+#     }
+    
+#     # Update the votes dictionary with dummy data
+#     votes.update(dummy_votes)
+    
+#     # Optionally, populate student_votes with dummy data
+#     student_votes = {
+#         "student_1": "got it",
+#         "student_2": "confused",
+#         "student_3": "example needed",
+#         "student_4": "got it",
+#         "student_5": "undo"
+#     }
+
+# Call this function to populate the UI with dummy data
+#populate_dummy_data()
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
