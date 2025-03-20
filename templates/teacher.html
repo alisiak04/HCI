@@ -14,7 +14,8 @@
             height: 100vh;
             margin: 0;
             background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
+            font-family: sans-serif;
+            font-size: 32px;
         }
         h1 {
             margin-bottom: 40px;
@@ -31,7 +32,7 @@
         button {
             padding: 10px 20px;
             margin-top: 20px;
-            font-size: 16px;
+            font-size: 24px;
             cursor: pointer;
             background-color: #007bff;
             color: white;
@@ -75,16 +76,30 @@
                         label: 'Votes',
                         data: [votesData['got it'] || 0, votesData['confused'] || 0, votesData['example needed'] || 0],
                         backgroundColor: [
-                            'green',  // got it
-                            'blue',   // confused
-                            'yellow'  // example needed
+                            '#006400',  // DarkGreen for got it
+                            '#0000CD',  // MediumBlue for confused
+                            '#FFD700'   // Gold for example needed
                         ],
                     }]
                 },
                 options: {
                     scales: {
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    size: 24,
+                                    family: 'sans-serif'
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 32,
+                                    family: 'sans-serif'
+                                }
+                            }
                         }
                     }
                 }
